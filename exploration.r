@@ -3,11 +3,11 @@ easypackages::libraries("dplyr", "ggplot2", "tidyr", "corrplot", "corrr",
                         "magrittr", "e1071","ggplot2","RColorBrewer", "viridis","maps","sf")
 options(scipen=999)
 
-nation_lvl <- read.csv('nation_level_daily.csv')
-state_lvl <- read.csv("state_level_latest.csv")
+nation_lvl <- read.csv('dataset/nation_level_daily.csv')
+state_lvl <- read.csv("dataset/state_level_latest.csv")
 state_lvl <- state_lvl[-1,]
 new <- full_join(state_lvl, geo_state)
-geo_state<- read.csv("geo_state.csv")
+geo_state<- read.csv("dataset/geo_state.csv")
 str(nation_lvl)
 
 nation_lvl$date <- as.factor(nation_lvl$date)
@@ -42,7 +42,7 @@ ggplot(mnation, aes(x=reorder(date,totalconfirmed),group =1)) +
   labs(x = "date", y = "number of people", title = ' Cornavirus Evolution (India) ')
 
 #gender distribution
-patients_data <- read.csv("patients_data.csv")
+patients_data <- read.csv("dataset/patients_data.csv")
 patients_data$current_status <- as.factor(patients_data$current_status)
 patients_data$gender <- as.factor(patients_data$gender)
 patients_data$state <-as.factor(patients_data$state)
@@ -56,7 +56,7 @@ ggplot(patients_data, aes(x=gender, fill=current_status))+
 
 #state-wise trend
 
-st_wise <- read.csv("state_wise_daily.csv")
+st_wise <- read.csv("dataset/state_wise_daily.csv")
 st_wise$Date <- factor(st_wise$Date, ordered = T)
 #st_wise[order(as.Date(st_wise$Date, format="%d/%m/%Y")),] #order by date
 st_wise$Status <- as.factor(st_wise$Status)
