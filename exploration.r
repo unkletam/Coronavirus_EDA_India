@@ -23,7 +23,8 @@ ggplot(mnation , aes(x=reorder(date,totalconfirmed), y=totalconfirmed, group =1,
 
 
 #observation on MAP
-mymap <- st_read("IND_adm/IND_adm1.shp")
+mymap <- st_read("IND_adm/Indian_States.shp")
+st_drivers()
 str(mymap)
 ggplot(mymap)+
   theme_bw()+
